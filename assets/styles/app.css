@@ -5,7 +5,7 @@ body{
 
 .custom-navbar {
             background-color: #1a365d;
-            padding: 1rem 0;
+            padding: 0.85rem 0;
             border-bottom: 1px solid #2a4a6b;
         }
         
@@ -265,10 +265,17 @@ h4{
     text-decoration: none;
 }
 
-          
+          .esapcesbas{
+            margin-bottom: 4rem;
+          }
 
 
+.custom-navbar{
+    position:fixed;
+    width: 100%;
+    z-index: 1;
 
+}
 
 
 
