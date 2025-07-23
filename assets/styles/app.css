@@ -232,6 +232,7 @@ margin: 2rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
   border: none;
+  margin-bottom: 2rem;
 }
 
 .card:hover {
@@ -266,7 +267,7 @@ h4{
 }
 
           .esapcesbas{
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
           }
 
 
@@ -278,10 +279,29 @@ h4{
 }
 
 
+@media (max-width: 990px) { 
 
-@media (max-width: 768px) and  (min-width: 0px) {
+
+    .footer2{
+        display: block;
+       flex-direction: column;
+       
+    }
+    
+ }
+
+
+@media (max-width: 768px) {
+
+
+.search-input {
+display: none;
+}
+
   .burger-menu {
     display: flex;
+    align-items: center;
+    cursor: pointer;
   }
 
   .nav-links {
@@ -291,8 +311,144 @@ h4{
   .mobile-menu {
     display: block;
     background-color: #f8f9fa;
+    padding: 1rem;
   }
+
+  .mobile-menu a {
+    display: block;
+    padding: 0.5rem 0;
+    color: #1a365d;
+    text-decoration: none;
+  }
+
+  .mobile-menu a:hover {
+    color: #0d1e3c;
+  }
+  .card-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+margin: 2rem;
 }
+
+.gap5{
+    display: flex;
+    gap: 5rem;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+    cursor: pointer;
+}
+
+.card2-img{
+    margin-top: -20%;
+}
+}
+
         
         
-      
+@media (max-width: 575px) {
+
+  .burger-menu {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+
+  .mobile-menu {
+    display: block;
+    background-color: #f8f9fa;
+    padding: 1rem;
+  }
+
+  .mobile-menu a {
+    display: block;
+    padding: 0.5rem 0;
+    color: #1a365d;
+    text-decoration: none;
+  }
+
+  .mobile-menu a:hover {
+    color: #0d1e3c;
+  }
+  .card-group{
+    display: block;
+
+    justify-content: center;
+    align-items: center;
+margin: 1rem;
+}
+
+.gap5{
+    gap: 2rem;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+    cursor: pointer;
+    margin: 0rem;
+}
+
+.card2-img{
+    margin-top: -20%;
+}
+}
+
+        
+          
+        
+@media (max-width: 400px) {
+
+
+
+
+  .burger-menu {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+
+  .mobile-menu {
+    display: block;
+    background-color: #f8f9fa;
+    padding: 1rem;
+  }
+
+  .mobile-menu a {
+    display: block;
+    padding: 0.5rem 0;
+    color: #1a365d;
+    text-decoration: none;
+  }
+
+  .mobile-menu a:hover {
+    color: #0d1e3c;
+  }
+  .card-group{
+    display: block;
+
+    justify-content: center;
+    align-items: center;
+margin: 1rem;
+}
+
+.gap5{
+    gap: 2rem;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+    cursor: pointer;
+    margin: 0rem;
+}
+
+.card2-img{
+    margin-top: -20%;
+}
+}
+
+        
+        

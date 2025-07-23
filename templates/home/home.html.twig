@@ -1,58 +1,19 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Welcome!{% endblock %}
 
     {% block stylesheets %}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     {% endblock %}
 
-    {% block javascripts %}
-        {% block importmap %}{{ importmap('app') }}{% endblock %}
-    {% endblock %}
-</head>
+ 
 
-<body>
 
-    <nav class="custom-navbar">
-        <div class="navbar-container d-flex justify-content-between align-items-center px-3 py-2">
-            <div class="navbar-left d-flex align-items-center">
-                <a href="#" class="navbar-brand">Chezsako</a>
-                <div class="search-container ms-3">
-                    <input type="text" class="search-input form-control" placeholder="Rechercher...">
-                </div>
-            </div>
 
-            <div class="navbar-right d-flex align-items-center">
-                <ul class="nav-links list-unstyled d-flex gap-3 mb-0">
-                    <li><a href="#home">Accueil</a></li>
-                    <li><a href="">Homme</a></li>
-                    <li><a href="#Nouveautés"> Nouveautés</a></li>
-                    <li><a href="#connexion">CONNEXION</a></li>
-                    <li><a href="#inscription">INSCRIPTION</a></li>
-                </ul>
 
-                <button class="burger-menu ms-3" id="burgerToggle">
-                    <div class="burger-line"></div>
-                    <div class="burger-line"></div>
-                    <div class="burger-line"></div>
-                </button>
-            </div>
-        </div>
-
-        <div class="mobile-menu d-none" id="mobileMenu">
-            <div class="mobile-search p-2">
-                <input type="text" class="form-control" placeholder="Rechercher...">
-            </div>
-            <ul class="list-unstyled p-3">
-                <li><a href="#home">Accueil</a></li>
-                <li><a href="#femme">Homme</a></li>
-                <li><a href="#connexion">CONNEXION</a></li>
-                <li><a href="#inscription">INSCRIPTION</a></li>
-            </ul>
-        </div>
-    </nav>
+   
 
     {% block body %}
 
@@ -64,10 +25,8 @@
     <div class="d-flex justify-content-center mt-5">
         <h3 id="Nouveautés">Nouveautés</h3>
     </div>
-
-    <div class="card-group mt-4">
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr;" class="gap5">
+{# 
+   <div style="display: grid; grid-template-columns:1fr 1fr;" class="gap5">
             <div class="card">
                 <img src="{{ asset('img/image3.png') }}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -78,121 +37,56 @@
              <div class="card33">
                     <small class="text-body-secondary">voir+</small>
                 </div>
-            </div>
-
+            </div> #}
+<div class="d-flex  justify-content-center">
+            {% for Produit in Produits %}
+            
+    <div class="card-group mt-4">
+   <div style="display: grid; grid-template-columns:1fr;" class="gap5">
 
 
 
             <div class="card">
-                <img src="{{ asset('img/image4.png') }}" class="card-img-top" alt="...">
+
+
+
+                <img src="{{ asset('img/image3.png') }}" class="card-img-top" alt="...">
+ 
+<P>Pas d'image</P>
                 <div class="card-body">
-                    <h5 class="card-title">Chemise</h5>
-                    <p class="card-text">Chemise relaxed en lyocell</p>
+
+
+                    <h5 class="card-title">{{ Produit.nom}}</h5>
+
+
+                    <p class="card-text">{{ Produit.description}}</p>
+
+
+
                     <p class="card-text">159€</p>
+
+
                 </div>
-        <div class="card33">
+             <div class="card33">
                     <small class="text-body-secondary">voir+</small>
                 </div>
-            </div>
-        </div>
+            </div> 
+     </div> 
+   </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr;" class="gap5 mt-4">
-            <div class="card">
-                <img src="{{ asset('img/image6.png') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Jean</h5>
-                    <p class="card-text">Jean slim homme stretch</p>
-                    <p class="card-text">89€</p>
-                </div>
-         <div class="card33">
-                    <small class="text-body-secondary">voir+</small>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="{{ asset('img/image7.png') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Polo-Tshirt</h5>
-                    <p class="card-text">Veste en jean oversize</p>
-                    <p class="card-text">119€</p>
-                </div>
-                <div class="card33">
-                    <small class="text-body-secondary">voir+</small>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="Meilleuresoffres">
+{% endfor %}
+</div>
+ <div class="Meilleuresoffres">
     
         <h4>Meilleures offres des soldes</h4>
     </div>
-    </div>
+    
 
     <div class="d-flex justify-content-center mt-4 mb-4">
         <P>Les plus grand marques</P>
     </div>
 
-
-
-
-    <div class="card-group mt-4">
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr;" class="gap5">
-            <div class="card">
-                <img src="{{ asset('img/image8.png') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Mocassin  </h5>
-                    <p class="card-text">Calvin Klein Jeans Down Puffer Jacket</p>
-                    <p class="card-text">159€</p>
-                </div>
-                <div class="card33">
-                    <small class="text-body-secondary">voir+</small>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="{{ asset('img/image9.png') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Smoking    </h5>
-                    <p class="card-text">Chemise relaxed en lyocell</p>
-                    <p class="card-text">159€</p>
-                </div>
-                <div class="card33">
-                    <small class="text-body-secondary">voir+</small>
-                </div>
-            </div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr;" class="gap5 mt-4">
-            <div class="card">
-                <img src="{{ asset('img/image10.png') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Sneakers  </h5>
-                    <p class="card-text">Jean slim homme stretch</p>
-                    <p class="card-text">89€</p>
-                </div>
-               <div class="card33">
-                    <small class="text-body-secondary">voir+</small>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="{{ asset('img/image11.png') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Sac de Voyage</h5>
-                    <p class="card-text">Veste en jean oversize</p>
-                    <p class="card-text">119€</p>
-                </div>
-                <div class="card33">
-                    <small class="text-body-secondary">voir+</small>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <footer style="background-color: #1a365d;" class="text-white text-center text-lg-start">
+    <footer style="background-color: #1a365d;" class="text-white text-center text-lg-start ">
 
 
 
@@ -210,11 +104,11 @@
           </button>
         </p>
       </section>
-    <div class="row d-flex justify-content-evenly text-start">
+    <div class="row d-flex justify-content-evenly text-start footer2">
       <!-- Coordonnées -->
-      <div class="col-lg-3 col-md-5 mb-4 mb-md-0 d-flex flex-column">
+      <div class="col-lg-3 col-md-5 mb-4 mb-md-0 d-flex flex-column ">
         <h5 class="text-uppercase">Coordonnées</h5>
-        <p>
+        <p class="esapcesbas">
           Adresse et contact :<br>
           20 avenue Louis Bordes 93240<br>
           06 20 73 22 64<br>
@@ -225,12 +119,13 @@
       <!-- Navigation -->
       <div class="col-lg-3 col-md-5 mb-4 mb-md-0 d-flex flex-column">
         <h5 class="text-uppercase">Navigation</h5>
-        <ul class="list-unstyled mb-0">
+        <ul class="list-unstyled mb-0" >
           <li><a href="#!" class="text-white">Accueil</a></li>
           <li><a href="#!" class="text-white">Nos Produits</a></li>
           <li><a href="#!" class="text-white">À Propos</a></li>
           <li><a href="#!" class="text-white">Contact</a></li>
         </ul>
+          <p class="esapcesbas">
       </div>
 
       <!-- Produits -->
@@ -259,5 +154,3 @@
     {% endblock %}
 
 
-</body>
-</html>

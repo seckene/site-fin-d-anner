@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
         
@@ -13,6 +15,48 @@
         {% endblock %}
     </head>
     <body>
+
+     <nav class="custom-navbar">
+        <div class="navbar-container d-flex justify-content-between align-items-center px-3 py-2">
+            <div class="navbar-left d-flex align-items-center">
+                <a href="#" class="navbar-brand">Chezsako</a>
+                <div class="search-container ms-3">
+                    <input type="text" class="search-input form-control" placeholder="Rechercher...">
+                </div>
+            </div>
+
+            <div class="navbar-right d-flex align-items-center">
+                <ul class="nav-links list-unstyled d-flex gap-3 mb-0">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="">Homme</a></li>
+                    <li><a href="#Nouveautés"> Nouveautés</a></li>
+                    <li><a href="#connexion">CONNEXION</a></li>
+                    <li><a href="#inscription">INSCRIPTION</a></li>
+                </ul>
+
+                <button class="burger-menu ms-3" id="burgerToggle">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu d-none" id="mobileMenu">
+            <div class="mobile-search p-2">
+                <input type="text" class="form-control" placeholder="Rechercher...">
+            </div>
+            <ul class="list-unstyled p-3">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#femme">Homme</a></li>
+                
+                    <li><a href="#Nouveautés"> Nouveautés</a></li>
+                <li><a href="#connexion">CONNEXION</a></li>
+                <li><a href="#inscription">INSCRIPTION</a></li>
+            </ul>
+        </div>
+    </nav>
+    
         {% block body %}{% endblock %}
     </body>
 </html>
