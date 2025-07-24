@@ -38,43 +38,24 @@
                     <small class="text-body-secondary">voir+</small>
                 </div>
             </div> #}
-<div class="d-flex  justify-content-center">
-            {% for Produit in Produits %}
-            
-    <div class="card-group mt-4">
-   <div style="display: grid; grid-template-columns:1fr;" class="gap5">
+      
+    <div class="card-group mt-5">
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 5rem;mt-5 ">
+    {% for produit in Produits %}
+        <div class="card">
+       
+<img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="...">
 
-
-
-            <div class="card">
-
-
-
-                <img src="{{ asset('img/image3.png') }}" class="card-img-top" alt="...">
- 
-<P>Pas d'image</P>
-                <div class="card-body">
-
-
-                    <h5 class="card-title">{{ Produit.nom}}</h5>
-
-
-                    <p class="card-text">{{ Produit.description}}</p>
-
-
-
-                    <p class="card-text">159€</p>
-
-
-                </div>
-             <div class="card33">
-                    <small class="text-body-secondary">voir+</small>
-                </div>
-            </div> 
-     </div> 
-   </div>
-
+            <div class="card-body">
+                <h5 class="card-title">{{ produit.nom }}</h5>
+                <p class="card-text">{{ produit.description }}</p>
+                <p class="card-text">{{ produit.prix }} €</p>
+            </div>
+        </div>
+  
 {% endfor %}
+</div>
+
 </div>
  <div class="Meilleuresoffres">
     

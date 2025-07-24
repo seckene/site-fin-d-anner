@@ -17,7 +17,8 @@ class Produit
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255)]
+    // Champ qui stocke le nom du fichier image uploadé
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $photo = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -27,7 +28,7 @@ class Produit
     private ?Categorie $categorie = null;
 
     #[ORM\Column]
-    private ?int $PRIX = null;
+    private ?int $prix = null; // conseillé de mettre en minuscules pour la variable
 
     public function getId(): ?int
     {
@@ -51,7 +52,7 @@ class Produit
         return $this->photo;
     }
 
-    public function setPhoto(string $photo): static
+    public function setPhoto(?string $photo): static
     {
         $this->photo = $photo;
 
@@ -82,14 +83,14 @@ class Produit
         return $this;
     }
 
-    public function getPRIX(): ?int
+    public function getPrix(): ?int
     {
-        return $this->PRIX;
+        return $this->prix;
     }
 
-    public function setPRIX(int $PRIX): static
+    public function setPrix(int $prix): static
     {
-        $this->PRIX = $PRIX;
+        $this->prix = $prix;
 
         return $this;
     }
