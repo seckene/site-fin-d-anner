@@ -39,33 +39,47 @@
                 </div>
             </div> #}
       
-    <div class="card-group mt-5">
-  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 5rem;mt-5 ">
-    {% for produit in Produits %}
+   <!-- PREMIER GROUPE : 4 premières cartes -->
+<div class="card-group mt-5">
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 5rem;">
+    {% for produit in Produits|slice(0, 4) %}
         <div class="card">
-       
-<img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="...">
-
+            <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ produit.nom }}</h5>
                 <p class="card-text">{{ produit.description }}</p>
                 <p class="card-text">{{ produit.prix }} €</p>
             </div>
         </div>
-  
-{% endfor %}
+    {% endfor %}
+  </div>
 </div>
 
+<!-- BANNIÈRE BLEUE -->
+<div class="Meilleuresoffres mt-5">
+    <h4>Meilleures offres des soldes</h4>
 </div>
- <div class="Meilleuresoffres">
-    
-        <h4>Meilleures offres des soldes</h4>
-    </div>
-    
 
-    <div class="d-flex justify-content-center mt-4 mb-4">
-        <P>Les plus grand marques</P>
-    </div>
+<div class="d-flex justify-content-center mt-4 mb-4">
+    <p>Les plus grandes marques</p>
+</div>
+
+<!-- DEUXIÈME GROUPE : Les cartes restantes -->
+<div class="card-group mt-5">
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 5rem;">
+    {% for produit in Produits|slice(4) %}
+        <div class="card">
+            <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ produit.nom }}</h5>
+                <p class="card-text">{{ produit.description }}</p>
+                <p class="card-text">{{ produit.prix }} €</p>
+            </div>
+        </div>
+    {% endfor %}
+  </div>
+</div>
+
 
     <footer style="background-color: #1a365d;" class="text-white text-center text-lg-start ">
 
