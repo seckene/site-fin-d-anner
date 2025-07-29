@@ -22,12 +22,29 @@
                   
                     </div>
 
+
                    
+                    <div class="mb-3">
+                        {{ form_label(registrationForm.EMAIL) }}
+                        {{ form_widget(registrationForm.EMAIL, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(registrationForm.EMAIL) }}
+                    </div>
+
+
+<div class="mb-3">
+    {{ form_label(registrationForm.tel) }}
+    {{ form_widget(registrationForm.tel, {'attr': {'class': 'form-control', 'placeholder': '06 12 34 56 78'}}) }}
+    {{ form_errors(registrationForm.tel) }}
+</div>
+
+
+
+
 
                     <div class="mb-3">
                         {{ form_label(registrationForm.password) }}
                         {{ form_widget(registrationForm.password, {'attr': {'class': 'form-control'}}) }}
-                 
+                        {{ form_errors(registrationForm.password) }}
                     </div>
 
                     <button class="btn btn-primary w-100 mt-3" type="submit">S'inscrire</button>
