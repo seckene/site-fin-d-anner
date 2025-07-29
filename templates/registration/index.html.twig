@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+   <div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm rounded-4 mt5">
+                <div class="card-body p-4 " >
+                    <h2 class="mb-4 text-center">Inscription</h2>
+
+                    {{ form_start(registrationForm) }}
+
+                    <div class="mb-3">
+                        {{ form_label(registrationForm.username) }}
+                        {{ form_widget(registrationForm.username, {'attr': {'class': 'form-control'}}) }}
+                  
+                    </div>
+
+                   
+
+                    <div class="mb-3">
+                        {{ form_label(registrationForm.password) }}
+                        {{ form_widget(registrationForm.password, {'attr': {'class': 'form-control'}}) }}
+                 
+                    </div>
+
+                    <button class="btn btn-primary w-100 mt-3" type="submit">S'inscrire</button>
+
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
