@@ -11,7 +11,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
  
 class Homecontroller extends AbstractController
 {
-    #[Route(path: '/home', name: 'home')]
+    #[Route(path: '/', name: 'home')]
     public function login(AuthenticationUtils $authenticationUtils,ProduitRepository $repo): Response
     {
         $produit= $repo->findAll();

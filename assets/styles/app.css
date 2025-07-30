@@ -7,6 +7,7 @@ body{
             background-color: #1a365d;
             padding: 0.85rem 0;
             border-bottom: 1px solid #2a4a6b;
+            margin-bottom: 2rem;
         }
         
         .navbar-brand {
@@ -285,6 +286,10 @@ h4{
     justify-content: flex-end;
 }
 
+
+.V6K{
+    background-color: red;
+}
 
 @media (max-width: 990px) { 
 
