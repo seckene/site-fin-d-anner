@@ -30,5 +30,6 @@ security:
         - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/produit, roles: ROLE_ADMIN }
         - { path: ^/home, roles: ROLE_USER }
+        - { path: ^/new, roles: ROLE_ADMIN }
         - { path: ^/categorie, roles: ROLE_USER }
-        
+        - { path: ^/user, roles: ROLE_ADMIN }

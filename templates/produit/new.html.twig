@@ -1,6 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'basedeux.html.twig' %}
 
 
+{% block title %}Produit index{% endblock %}
+{% block stylesheets %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
 
 
 
@@ -8,6 +12,7 @@
     <h1>Create new Produit</h1>
 
     {{ include('produit/_form.html.twig') }}
+    
 
     <a href="{{ path('app_produit_index') }}">back to list</a>
 {% endblock %}

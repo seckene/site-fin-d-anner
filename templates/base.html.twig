@@ -27,13 +27,19 @@
             </div>
 
             <div class="navbar-right d-flex align-items-center">
-                <ul class="nav-links list-unstyled d-flex gap-3 mb-0">
-                    <li><a href="/">Accueil</a></li>
-                    <li><a href="">Homme</a></li>
-                    <li><a href="#Nouveautés"> Nouveautés</a></li>
-                    <li><a href="login">CONNEXION</a></li>
-                    <li><a href="register">INSCRIPTION</a></li>
-                </ul>
+               <ul class="nav-links list-unstyled d-flex gap-3 mb-0">
+    <li><a href="/">Accueil</a></li>
+    <li><a href="">Homme</a></li>
+    <li><a href="#Nouveautés">Nouveautés</a></li>
+
+    {% if not app.user %}
+        <li><a href="{{ path('login') }}">CONNEXION</a></li>
+        <li><a href="{{ path('register') }}">INSCRIPTION</a></li>
+    {% else %}
+        <li><a href="{{ path('app_logout') }}">DÉCONNEXION</a></li>
+    {% endif %}
+</ul>
+
 
                 <button class="burger-menu ms-3" id="burgerToggle">
                     <div class="burger-line"></div>

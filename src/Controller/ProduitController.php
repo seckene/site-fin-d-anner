@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route; // ou Attribute selon version
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-#[Route('/produit')]
+#[Route('admin/produit')]
 final class ProduitController extends AbstractController
 {
     #[Route(name: 'app_produit_index', methods: ['GET'])]
@@ -61,6 +61,7 @@ final class ProduitController extends AbstractController
 
         return $this->render('produit/new.html.twig', [
             'form' => $form->createView(),
+            
         ]);
     }
 
@@ -69,6 +70,7 @@ final class ProduitController extends AbstractController
     {
         return $this->render('produit/show.html.twig', [
             'produit' => $produit,
+            
         ]);
     }
 
