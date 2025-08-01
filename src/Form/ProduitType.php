@@ -15,31 +15,45 @@ class ProduitType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-       $builder
+ $builder
     ->add('nom', null, [
-        'label' => 'Nom du produit ',
-        'attr' => ['class' => 'form-control mb-3 mt-5'],
+        'label' => 'Nom du produit',
+        'attr' => [
+            'class' => 'form-control mb-3 mt-4',
+            'placeholder' => 'Entrez le nom du produit',
+        ],
     ])
     ->add('description', null, [
         'label' => 'Description',
-        'attr' => ['class' => 'form-control mb-3'],
+        'attr' => [
+            'class' => 'form-control mb-3',
+            'placeholder' => 'Décrivez le produit',
+            'rows' => 4,
+        ],
     ])
     ->add('prix', null, [
         'label' => 'Prix (€)',
-        'attr' => ['class' => 'form-control mb-3'],
+        'attr' => [
+            'class' => 'form-control mb-3',
+        ],
     ])
     ->add('categorie', EntityType::class, [
         'class' => Categorie::class,
         'choice_label' => 'nom',
         'label' => 'Catégorie',
         'placeholder' => 'Choisir une catégorie',
-        'attr' => ['class' => 'form-select mb-3'],
+        'attr' => [
+            'class' => 'form-select mb-3',
+        ],
     ])
     ->add('imageFile', FileType::class, [
         'mapped' => false,
         'required' => false,
         'label' => 'Image du produit',
-        'attr' => ['class' => 'form-control mb-3'],
+        'attr' => [
+            'class' => 'form-control mb-3',
+            'accept' => 'image/jpeg,image/png,image/webp',
+        ],
         'constraints' => [
             new File([
                 'maxSize' => '2M',
@@ -51,8 +65,7 @@ class ProduitType extends AbstractType
                 'mimeTypesMessage' => 'Merci de choisir une image valide (JPEG, PNG, WebP).',
             ]),
         ],
-    ])
-;
+    ]);
 
     }
 
