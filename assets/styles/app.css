@@ -294,7 +294,12 @@ h4{
 .rback{
     background-color: #0d1e3c;
 }
-
+h1{
+font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+h2{
+font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 @media (max-width: 990px) { 
 
 

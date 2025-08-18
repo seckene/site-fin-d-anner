@@ -8,8 +8,10 @@
 
 
 {% block body %}
-    <h1>Categorie index</h1>
 
+<div class="d-flex justify-content-center mb-4">
+    <h1>Categorie index</h1>
+</div>
     <table class="table mt-5">
         <thead>
             <tr>
@@ -19,6 +21,14 @@
             </tr>
         </thead>
         <tbody>
+
+
+
+        
+<div class="d-flex justify-content-center align-items-center mb-4 mt-5">
+
+ <h1>Categorie</h1>
+</div>
         {% for categorie in categories %}
             <tr>
                 <td>{{ categorie.id }}</td>
