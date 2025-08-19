@@ -1,7 +1,46 @@
-{% extends 'basedeux.html.twig' %}
-
-{% block title %}Inscription{% endblock %}
-
 {% block body %}
+<div class="center-page">
+  <a href="{{ path('app_produit_index') }}">
+    <button type="button" class="btn-dashboard">
+        Accéder au dashboard Du Roi Seckene !
+    </button>
+      </a>
+</div>
 
+<style>
+  html, body { height: 100%; margin: 0; }
+
+  .center-page {
+    position: fixed;      
+    inset: 0;            
+    display: grid;       
+    place-items: center; 
+  }
+
+  .btn-dashboard {
+    background-color: black;
+    color: #fff;
+    border: none;
+    padding: 3rem 3rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(13,30,60,0.3);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  .btn-dashboard:hover {
+    background-color: #13294f;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(13,30,60,0.4);
+  }
+  .btn-dashboard:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(13,30,60,0.3);
+  }
+  a{
+color:white;
+    text-decoration: none;
+  }
+</style>
 {% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row d-flex justify-content-center align-items-center ">
+      <div class="col-md-6 col-lg-4">
+        <div class="card profile-card p-4">
+          <div class="text-center">
+            <div class="avatar mx-auto mb-3">
+         
+              ss
+            </div>
+
+            <h5 class="mb-1 fw-semibold">
+              seckene sako
+            </h5>
+            <div class="text-secondary mb-4">
+              seckene_sako@hotmail.com
+            </div>
+
+            <div class="d-grid gap-3">
+              <a href="{{ path('modifier') }}" class="btn btn-gradient py-2">
+                <i class="bi bi-pencil me-2"></i>
+                Modifier mon profil
+              </a>
+
+              <a href="{{ path('app_logout') }}" class="btn btn-logout py-2">
+                <i class="bi bi-lock-fill me-2">
+                
+                </i>
+                Se déconnecter
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="card" style="width: 40rem;height:20rem;margin-top:10rem;border:2px solid grey">
+  <h3 class="mt-2" style="color:grey;font-size:1.5rem">Commandes récentes</h3>
+  <ul class="d-flex fort">
+  <li>Numéro</li>
+    <li>Date</li>
+      <li>Total</li>
+        <li>Statut</li>
+          <li>action</li>
+  </ul>
+</div>
+    </div>
+  </div>
+ 
+
+  <style>
+    .profile-card {
+        margin-top:10rem;
+      
+      max-width: 380px;
+      border-radius: 1rem;
+      border: 1px solid #dcdfea;
+      box-shadow: 0 6px 24px rgba(20, 20, 43, 0.06);
+    }
+
+    .avatar {
+      width: 84px; height: 84px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      font-weight: 700; font-size: 28px; color: #fff;
+      background: linear-gradient(135deg, #4c6fff, #9b6bff);
+      box-shadow: inset 0 0 0 4px rgba(255,255,255,.35);
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, #4c6fff, #9b6bff);
+      border: 0;
+      color: #fff;
+    }
+    .btn-gradient:hover,
+    .btn-gradient:focus {
+      filter: brightness(1.03);
+      color: #fff;
+    }
+
+    .btn-logout {
+      background: #f7f8fb; 
+      border: 1px solid #e6e8f0; 
+      color: #4b5563;
+    }
+    .btn-logout:hover { background: #eef1f7; color:#374151; }
+
+    .btn:focus { box-shadow: 0 0 0 .2rem rgba(76,111,255,.25); }
+
+
+
+    .fort{
+        justify-content: space-evenly;
+        
+      
+    }
+
+li{
+    list-style-type:none;
+   margin-top:1rem
+   
+}
+  </style>
+{% endblock %}

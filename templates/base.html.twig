@@ -32,11 +32,12 @@
     <li><a href="">Homme</a></li>
     <li><a href="#Nouveautés">Nouveautés</a></li>
 
-    {% if not app.user %}
+    {% if app.user %}
+        <li><a href="{{ path('profil') }}">Profil</a></li>
+        <li><a href="{{ path('app_logout') }}">DÉCONNEXION</a></li>
+    {% else %}
         <li><a href="{{ path('login') }}">CONNEXION</a></li>
         <li><a href="{{ path('register') }}">INSCRIPTION</a></li>
-    {% else %}
-        <li><a href="{{ path('app_logout') }}">DÉCONNEXION</a></li>
     {% endif %}
 </ul>
 
@@ -56,10 +57,15 @@
             <ul class="list-unstyled p-3">
                 <li><a href="#home">Accueil</a></li>
                 <li><a href="#femme">Homme</a></li>
-                
-                    <li><a href="#Nouveautés"> Nouveautés</a></li>
-                <li><a href="#connexion">CONNEXION</a></li>
-                <li><a href="#inscription">INSCRIPTION</a></li>
+                <li><a href="#Nouveautés"> Nouveautés</a></li>
+
+                {% if app.user %}
+                    <li><a href="{{ path('profil') }}">Profil</a></li>
+                    <li><a href="{{ path('app_logout') }}">DÉCONNEXION</a></li>
+                {% else %}
+                    <li><a href="{{ path('login') }}">CONNEXION</a></li>
+                    <li><a href="{{ path('register') }}">INSCRIPTION</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
@@ -67,4 +73,3 @@
         {% block body %}{% endblock %}
     </body>
 </html>
- 
