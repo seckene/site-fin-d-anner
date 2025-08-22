@@ -11,20 +11,16 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
  
 class Homecontroller extends AbstractController
 {
-    #[Route(path: '/', name: 'home')]
-    public function login(AuthenticationUtils $authenticationUtils,ProduitRepository $repo): Response
+      #[Route('/', name: 'home')]
+    public function index(ProduitRepository $produitRepository): Response
     {
-        $produit= $repo->findAll();
-        $error = $authenticationUtils->getLastAuthenticationError();
- 
-        $lastUsername = $authenticationUtils->getLastUsername();
-        
+        $produits = $produitRepository->findAll(); // ⚡ variable en minuscule
+
         return $this->render('home/home.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error,
-            'Produits' => $produit
+            'produits' => $produits, // ⚡ clé en minuscule pour Twig
         ]);
     }
+
  
    
 }

@@ -24,6 +24,12 @@ final class ProduitController extends AbstractController
         ]);
     }
 
+
+
+
+
+
+
     #[Route('/new', name: 'app_produit_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
@@ -122,4 +128,8 @@ final class ProduitController extends AbstractController
 
         return $this->redirectToRoute('app_produit_index');
     }
+
+   
+    
 }
+

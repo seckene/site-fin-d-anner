@@ -1,52 +1,30 @@
-
 {% extends 'base.html.twig' %}
 
+{% block body %}
 
+<div class="card2 text-bg-dark" style="height: 650px; overflow: hidden;">
+    <img src="{{ asset('img/bnr3.jpg') }}" class="card2-img" style="object-fit: cover; width: 100%; height: 100%;" alt="...">
+    <div class="card2-img-overlay"></div>
+</div>
 
+<div class="d-flex justify-content-center mt-5">
+    <h3 id="Nouveautés">Nouveautés</h3>
+</div>
 
-
-
-
-   
-
-    {% block body %}
-
-    <div class="card2 text-bg-dark" style="height: 650px; overflow: hidden;">
-        <img src="{{ asset('img/bnr3.jpg') }}" class="card2-img" style="object-fit: cover; width: 100%; height: 100%;" alt="...">
-        <div class="card2-img-overlay"></div>
-    </div>
-
-    <div class="d-flex justify-content-center mt-5">
-        <h3 id="Nouveautés">Nouveautés</h3>
-    </div>
-{# 
-   <div style="display: grid; grid-template-columns:1fr 1fr;" class="gap5">
-            <div class="card">
-                <img src="{{ asset('img/image3.png') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Doudoune</h5>
-                    <p class="card-text">Calvin Klein Jeans Down Puffer Jacket</p>
-                    <p class="card-text">159€</p>
-                </div>
-             <div class="card33">
-                    <small class="text-body-secondary">voir+</small>
-                </div>
-            </div> #}
-      
-   <!-- PREMIER GROUPE : 4 premières cartes -->
+<!-- PREMIER GROUPE : 4 premières cartes -->
 <div class="card-group mt-5">
   <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 5rem;">
-    {% for produit in Produits|slice(0, 4) %}
-        <div class="card">
-            <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ produit.nom }}</h5>
-                <p class="card-text">{{ produit.description }}</p>
-                <p class="card-text">{{ produit.prix }} €</p>
-                
-                <p class="text2">Voir+</p>
+    {% for produit in produits|slice(0, 4) %}
+       <a href="{{ path('app_produit_show_detaille', {'id': produit.id}) }}" class="card-link">
+            <div class="card">
+                <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="{{ produit.nom }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ produit.nom }}</h5>
+                    <p class="card-text">{{ produit.description }}</p>
+                    <p class="card-text">{{ produit.prix }} €</p>
+                </div>
             </div>
-        </div>
+        </a>
     {% endfor %}
   </div>
 </div>
@@ -59,50 +37,41 @@
 <div class="d-flex justify-content-center mt-4 mb-4">
     <p>Les plus grandes marques</p>
 </div>
- 
+
 <!-- DEUXIÈME GROUPE : Les cartes restantes -->
 <div class="card-group mt-5">
   <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 5rem;">
-    {% for produit in Produits|slice(4) %}
-        <div class="card">
-            <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ produit.nom }}</h5>
-                <p class="card-text">{{ produit.description }}</p>
-                <p class="card-text">{{ produit.prix }} €</p>
-                
-                <p class="text2">Voir+</p>
+     {% for produit in produits|slice(4) %}
+      <a href="{{ path('app_produit_show_detaille', {'id': produit.id}) }}" class="card-link">
+            <div class="card">
+                <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="{{ produit.nom }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ produit.nom }}</h5>
+                    <p class="card-text">{{ produit.description }}</p>
+                    <p class="card-text">{{ produit.prix }} €</p>
+                </div>
             </div>
-        </div>
+     </a>
     {% endfor %}
   </div>
 </div>
 
-
-    <footer style="background-color: #1a365d;" class="text-white text-center text-lg-start ">
-
-
-
-
-
+<footer style="background-color: #1a365d;" class="text-white text-center text-lg-start ">
   <div class="container p-4">
-
-
-  
- <section class="esapcesbas">
- 
+    <section class="esapcesbas">
         <p class="d-flex justify-content-center align-items-center">
           <span class="me-3">Register for free</span>
-         <a href="{{ path('login') }}">
-          <button data-mdb-ripple-init type="button" class="btn btn-outline-light btn-rounded">
-            Sign up!
-          </button>
-        </a>
+          <a href="{{ path('login') }}">
+            <button type="button" class="btn btn-outline-light btn-rounded">
+              Sign up!
+            </button>
+          </a>
         </p>
-      </section>
+    </section>
+
     <div class="row d-flex justify-content-evenly text-start footer2">
       <!-- Coordonnées -->
-      <div class="col-lg-3 col-md-5 mb-4 mb-md-0 d-flex flex-column ">
+      <div class="col-lg-3 col-md-5 mb-4 mb-md-0 d-flex flex-column">
         <h5 class="text-uppercase">Coordonnées</h5>
         <p class="esapcesbas">
           Adresse et contact :<br>
@@ -115,13 +84,12 @@
       <!-- Navigation -->
       <div class="col-lg-3 col-md-5 mb-4 mb-md-0 d-flex flex-column">
         <h5 class="text-uppercase">Navigation</h5>
-        <ul class="list-unstyled mb-0" >
+        <ul class="list-unstyled mb-0">
           <li><a href="#!" class="text-white">Accueil</a></li>
           <li><a href="#!" class="text-white">Nos Produits</a></li>
           <li><a href="#!" class="text-white">À Propos</a></li>
           <li><a href="#!" class="text-white">Contact</a></li>
         </ul>
-          <p class="esapcesbas">
       </div>
 
       <!-- Produits -->
@@ -141,12 +109,18 @@
     </div>
   </div>
 
-  <!-- Copyright -->
   <div class="text-center p-3" style="background-color: #163058;">
     © 2020 Copyright :
-    <a class="text-white" href="https://mdbootstrap.com/">seckene_sako@hotmail.com</a>
+    <a class="text-white" href="mailto:seckene_sako@hotmail.com">seckene_sako@hotmail.com</a>
   </div>
 </footer>
-    {% endblock %}
 
+<style>
+a {
+    list-style-type: none;
+    margin-top: 1rem;
+    text-decoration: none;
+}
+</style>
 
+{% endblock %}

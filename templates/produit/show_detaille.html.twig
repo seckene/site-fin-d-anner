@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+    <div class="d-flex justify-content-start ">
+    
+        <div class="col-md-4 mt-5" >
+
+<div class="card" style="width: 40rem; margin-left:1rem;padding:1rem;margin-top:6rem;">
+   <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="{{ produit.nom }}">
+            
+</div>
+</div>
+</div>
+
+
+
+
+ <style>
+
+.card-body{
+background-color:whitesmoke;
+}
+
+  </style>
+
+{% endblock %}
