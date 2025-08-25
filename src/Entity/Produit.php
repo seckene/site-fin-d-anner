@@ -28,7 +28,13 @@ class Produit
     private ?Categorie $categorie = null;
 
     #[ORM\Column]
-    private ?int $prix = null; // conseillé de mettre en minuscules pour la variable
+    private ?int $prix = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $descrptionlong = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $couleur = null; // conseillé de mettre en minuscules pour la variable
 
     public function getId(): ?int
     {
@@ -91,6 +97,30 @@ class Produit
     public function setPrix(int $prix): static
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getDescrptionlong(): ?string
+    {
+        return $this->descrptionlong;
+    }
+
+    public function setDescrptionlong(string $descrptionlong): static
+    {
+        $this->descrptionlong = $descrptionlong;
+
+        return $this;
+    }
+
+    public function getCouleur(): ?string
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(string $couleur): static
+    {
+        $this->couleur = $couleur;
 
         return $this;
     }
