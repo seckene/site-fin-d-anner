@@ -20,8 +20,8 @@
                 <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="{{ produit.nom }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ produit.nom }}</h5>
-                    <p class="card-text">{{ produit.description }}</p>
-                    <p class="card-text">{{ produit.prix }} €</p>
+                    <p class="">{{ produit.description }}</p>
+                    <p class="">{{ produit.prix }} €</p>
                 </div>
             </div>
         </a>
@@ -34,9 +34,6 @@
     <h4>Meilleures offres des soldes</h4>
 </div>
 
-<div class="d-flex justify-content-center mt-4 mb-4">
-    <p>Les plus grandes marques</p>
-</div>
 
 <!-- DEUXIÈME GROUPE : Les cartes restantes -->
 <div class="card-group mt-5">
@@ -47,16 +44,17 @@
                 <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="{{ produit.nom }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ produit.nom }}</h5>
-                    <p class="card-text">{{ produit.description }}</p>
-                    <p class="card-text">{{ produit.prix }} €</p>
+                    <p class="">{{ produit.description }}</p>
+                    <p class="-text">{{ produit.prix }} €</p>
                 </div>
             </div>
      </a>
     {% endfor %}
   </div>
 </div>
+{% if not app.user %}
 
-<footer style="background-color: #1a365d;" class="text-white text-center text-lg-start ">
+<footer style="background-color: #1a365d;" class="text-white text-center text-lg-start">
   <div class="container p-4">
     <section class="esapcesbas">
         <p class="d-flex justify-content-center align-items-center">
@@ -68,10 +66,15 @@
           </a>
         </p>
     </section>
+{% endif %}
 
-    <div class="row d-flex justify-content-evenly text-start footer2">
+<div style="background-color: #1a365d;" class="text-white text-center text-lg-start ">
+
+    <div class="row d-flex justify-content-evenly text-start footer2 p-5">
+
+
       <!-- Coordonnées -->
-      <div class="col-lg-3 col-md-5 mb-4 mb-md-0 d-flex flex-column">
+      <div class="col-lg-3 col-md-5 mb-4 mb-md-0  d-flex flex-column  ">
         <h5 class="text-uppercase">Coordonnées</h5>
         <p class="esapcesbas">
           Adresse et contact :<br>
@@ -120,7 +123,11 @@ a {
     list-style-type: none;
     margin-top: 1rem;
     text-decoration: none;
+
+    
 }
+
+
 </style>
 
 {% endblock %}

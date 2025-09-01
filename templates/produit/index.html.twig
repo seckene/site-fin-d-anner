@@ -15,6 +15,8 @@
                 <th>Photo</th>
                 <th>PRIX</th>
                  <th>Description</th>
+                   <th>Detailler</th>
+                    <th>Couleur</th>
                      <th>actions</th>
             </tr>
         </thead>
@@ -35,6 +37,8 @@
                 
                 <td>{{ produit.PRIX }}</td>
                 <td>{{ produit.description }}</td>
+                <td>{{ produit.descrptionlong }}</td>
+                  <td>{{ produit.couleur }}</td>
                 <td>
                     <a href="{{ path('app_produit_show', {'id': produit.id}) }}">show</a>
                     <a href="{{ path('app_produit_edit', {'id': produit.id}) }}">edit</a>

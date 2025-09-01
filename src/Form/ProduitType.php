@@ -31,6 +31,32 @@ class ProduitType extends AbstractType
             'rows' => 4,
         ],
     ])
+    ->add('descrptionlong', null, [
+        'label' => 'descrptionlong',
+        'attr' => [
+            'class' => 'form-control mb-3',
+            'placeholder' => ' descrptionlong',
+            'rows' => 4,
+        ],
+    ])->add('couleur', null, [
+        'label' => 'couleur',
+        'attr' => [
+            'class' => 'form-control mb-3',
+            'placeholder' => 'Décrivez la couleur',
+            'rows' => 4,
+        ],
+    ])
+
+
+
+    ->add('stock', null, [
+        'label' => 'stock',
+        'attr' => [
+            'class' => 'form-control mb-3',
+            'placeholder' => 'le stock',
+            'rows' => 4,
+        ],
+    ])
     ->add('prix', null, [
         'label' => 'Prix (€)',
         'attr' => [

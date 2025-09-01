@@ -4,8 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+     
       {% block stylesheets %}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 {% endblock %}
@@ -29,12 +30,13 @@
             <div class="navbar-right d-flex align-items-center">
                <ul class="nav-links list-unstyled d-flex gap-3 mb-0">
     <li><a href="/">Accueil</a></li>
-    <li><a href="">Homme</a></li>
-    <li><a href="#Nouveautés">Nouveautés</a></li>
+    <li><a href="#Nouveautés">Produits</a></li>
 
     {% if app.user %}
         <li><a href="{{ path('profil') }}">Profil</a></li>
-        <li><a href="{{ path('app_logout') }}">DÉCONNEXION</a></li>
+        
+    <li> <a href=""> Pannier <i class="fa-solid fa-basket-shopping fa-xl" style="color: #ffffff;"></i></a></li>
+       <button class="btn btn-secondary btn-lg"><li><a href="{{ path('app_logout') }}">DÉCONNEXION</a></li></button> 
     {% else %}
         <li><a href="{{ path('login') }}">CONNEXION</a></li>
         <li><a href="{{ path('register') }}">INSCRIPTION</a></li>
@@ -56,12 +58,13 @@
             </div>
             <ul class="list-unstyled p-3">
                 <li><a href="#home">Accueil</a></li>
-                <li><a href="#femme">Homme</a></li>
-                <li><a href="#Nouveautés"> Nouveautés</a></li>
+               
+                <li><a href="#Nouveautés"> produits</a></li>
 
                 {% if app.user %}
                     <li><a href="{{ path('profil') }}">Profil</a></li>
-                    <li><a href="{{ path('app_logout') }}">DÉCONNEXION</a></li>
+                    <li><a href=""><i class="fa-solid fa-basket-shopping fa-2xl" style="color: #ffffff;"></i></a></li>
+                   <BUtton class="btn btn-outline-light btn-rounded"><li><a href="{{ path('app_logout') }}">DÉCONNEXION</a></li></BUtton> 
                 {% else %}
                     <li><a href="{{ path('login') }}">CONNEXION</a></li>
                     <li><a href="{{ path('register') }}">INSCRIPTION</a></li>

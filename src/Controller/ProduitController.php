@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route; // ou Attribute selon version
+use Symfony\Component\Routing\Annotation\Route; 
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -38,7 +38,7 @@ final class ProduitController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Gestion upload image
+           
             $imageFile = $form->get('imageFile')->getData();
 
             if ($imageFile) {
@@ -48,7 +48,7 @@ final class ProduitController extends AbstractController
 
                 try {
                     $imageFile->move(
-                        $this->getParameter('images_directory'), // défini dans services.yaml
+                        $this->getParameter('images_directory'),
                         $newFilename
                     );
                     
@@ -56,7 +56,7 @@ final class ProduitController extends AbstractController
                     $this->addFlash('error', 'Erreur lors de l\'upload de l\'image.');
                 }
 
-                $produit->setPhoto($newFilename); // "photo" = nom du champ dans l'entité
+                $produit->setPhoto($newFilename);
             }
 
             $entityManager->persist($produit);
