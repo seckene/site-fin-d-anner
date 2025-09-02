@@ -53,7 +53,7 @@ class ProduitType extends AbstractType
         'label' => 'stock',
         'attr' => [
             'class' => 'form-control mb-3',
-            'placeholder' => 'le stock',
+            'placeholder' => 'le stockC',
             'rows' => 4,
         ],
     ])

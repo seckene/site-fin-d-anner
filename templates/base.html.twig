@@ -30,7 +30,7 @@
             <div class="navbar-right d-flex align-items-center">
                <ul class="nav-links list-unstyled d-flex gap-3 mb-0">
     <li><a href="/">Accueil</a></li>
-    <li><a href="#Nouveautés">Produits</a></li>
+    <li><a href="{{ path('pageproduits') }}">Produits</a></li>
 
     {% if app.user %}
         <li><a href="{{ path('profil') }}">Profil</a></li>
