@@ -1,28 +1,26 @@
 <?php
- 
-namespace App\Controller;
 
-use App\Entity\Produit;
-use App\Repository\ProduitRepository;
+namespace App\Controller;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
- 
+
 class modifiercontroller extends AbstractController
 {
     #[Route(path: '/modifier', name: 'modifier')]
-    public function login(AuthenticationUtils $authenticationUtils,ProduitRepository $repo): Response
+    public function index(): Response
     {
-        $produit= $repo->findAll();
-        $error = $authenticationUtils->getLastAuthenticationError();
- 
-        $lastUsername = $authenticationUtils->getLastUsername();
-        
+        // Récupérer l'utilisateur connecté
+        $user = $this->getUser();
+
+        if (!$user) {
+            // Si personne n'est connecté, redirection vers login
+            return $this->redirectToRoute('app_login');
+        }
+
         return $this->render('modifier/modifier.html.twig', [
-           
+            'user' => $user
         ]);
     }
- 
-   
 }

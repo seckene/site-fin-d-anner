@@ -1,14 +1,16 @@
 security:
+    # Gestion des utilisateurs
     providers:
         app_user_provider:
             entity:
                 class: App\Entity\User
-                property: username  # ← tu peux remettre "email" ici si besoin
+                property: username  # ou "email" selon ta configuration
 
     password_hashers:
         App\Entity\User:
             algorithm: auto
 
+    # Firewalls
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -20,16 +22,22 @@ security:
             form_login:
                 login_path: login
                 check_path: login
-                default_target_path: admin  # ← redirection après login
+                default_target_path: admin  # redirection après login
             logout:
                 path: app_logout
                 target: login
 
+    # Contrôle d’accès
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        # Autoriser tout le monde à voir les détails des produits
+        - { path: ^/produit/\d+, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        # Pages réservées aux utilisateurs connectés
         - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/produit, roles: ROLE_ADMIN }
         - { path: ^/home, roles: ROLE_USER }
-        - { path: ^/new, roles: ROLE_ADMIN }
         - { path: ^/categorie, roles: ROLE_USER }
+
+        # Pages réservées aux administrateurs
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/new, roles: ROLE_ADMIN }
         - { path: ^/user, roles: ROLE_ADMIN }
