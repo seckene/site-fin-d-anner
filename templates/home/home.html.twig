@@ -4,7 +4,9 @@
 
 <div class="card2 text-bg-dark" style="height: 650px; overflow: hidden;">
     <img src="{{ asset('img/bnr3.jpg') }}" class="card2-img" style="object-fit: cover; width: 100%; height: 100%;" alt="...">
-    <div class="card2-img-overlay"></div>
+    <div class="card2-img-overlay">
+    
+  </div>
 </div>
 
 <div class="d-flex justify-content-center mt-5">
@@ -12,22 +14,25 @@
 </div>
 
 <!-- PREMIER GROUPE : 4 premières cartes -->
-<div class="card-group mt-5">
-  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 5rem;">
-    {% for produit in produits|slice(0, 4) %}
-       <a href="{{ path('app_produit_show_detaille', {'id': produit.id}) }}" class="card-link">
-            <div class="card">
-                <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="{{ produit.nom }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ produit.nom }}</h5>
-                    <p class="">{{ produit.description }}</p>
-                    <p class="">{{ produit.prix }} €</p>
+<div class="container mt-5">
+    <div class="row g-4">
+        {% for produit in produits|slice(0, 4) %}
+        <div class="col-md-6 col-lg-3">
+            <a href="{{ path('app_produit_show_detaille', {'id': produit.id}) }}" class="text-decoration-none">
+                <div class="card h-100 shadow-sm border-0 rounded-4 hover-shadow">
+                    <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top rounded-top-4" alt="{{ produit.nom }}">
+                    <div class="card-body">
+                        <h5 class="card-title text-dark">{{ produit.nom }}</h5>
+                          <p class="card-text text-muted small">{{ produit.descrptionlong|length > 80 ? produit.descrptionlong[:80] ~ '...' : produit.descrptionlong }}</p>
+                          <p class="fw-bold text-primary">{{ produit.prix }} €</p>
+                    </div>
                 </div>
-            </div>
-        </a>
-    {% endfor %}
-  </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
 </div>
+
 
 <!-- BANNIÈRE BLEUE -->
 <div class="Meilleuresoffres mt-5">
@@ -36,21 +41,23 @@
 
 
 <!-- DEUXIÈME GROUPE : Les cartes restantes -->
-<div class="card-group mt-5">
-  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 5rem;">
-     {% for produit in produits|slice(4) %}
-      <a href="{{ path('app_produit_show_detaille', {'id': produit.id}) }}" class="card-link">
-            <div class="card">
-                <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="{{ produit.nom }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ produit.nom }}</h5>
-                    <p class="">{{ produit.description }}</p>
-                    <p class="-text">{{ produit.prix }} €</p>
+<div class="container mt-5">
+    <div class="row g-4">
+        {% for produit in produits|slice(4) %}
+        <div class="col-md-6 col-lg-3 mb-5">
+            <a href="{{ path('app_produit_show_detaille', {'id': produit.id}) }}" class="text-decoration-none">
+                <div class="card h-100 shadow-sm border-0 rounded-4 hover-shadow">
+                    <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top rounded-top-4" alt="{{ produit.nom }}">
+                    <div class="card-body">
+                        <h5 class="card-title text-dark">{{ produit.nom }}</h5>
+                        <p class="card-text text-muted small">{{ produit.descrptionlong|length > 80 ? produit.descrptionlong[:80] ~ '...' : produit.descrptionlong }}</p>
+                        <p class="fw-bold text-primary">{{ produit.prix }} €</p>
+                    </div>
                 </div>
-            </div>
-     </a>
-    {% endfor %}
-  </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% if not app.user %}
 
@@ -121,12 +128,18 @@
 <style>
 a {
     list-style-type: none;
-    margin-top: 1rem;
     text-decoration: none;
 
     
 }
-
+.hover-shadow:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+}
+.card-text {
+    min-height: 60px; /* pour que toutes les cartes aient la même hauteur */
+}
 
 </style>
 

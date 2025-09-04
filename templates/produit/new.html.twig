@@ -3,8 +3,8 @@
 {% block body %}
 
     <div class="d-flex justify-content-center ">
-    
-        <div class="col-md-4 mt-5" >
+    <div class="card shadow-sm p-4 mb-4" >
+        <div class="col-md-4 mt-5" style="width: 100%;" >
         
     <h1 class="mb-4 mt-5">creation d'un produits</h1>
 
@@ -17,11 +17,11 @@
                 {{ form_row(form.prix) }}
                 {{ form_row(form.categorie) }}
                 {{ form_row(form.imageFile) }}
-
+ {{ form_row(form.stock) }}
                 <button type="submit" class="btn btn-primary mt-3 w-100">Enregistrer</button>
 
             {{ form_end(form) }}
         </div>
     </div>
-
+    </div>
 {% endblock %}

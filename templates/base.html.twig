@@ -21,7 +21,7 @@
      <nav class="custom-navbar">
         <div class="navbar-container d-flex justify-content-between align-items-center px-3 py-2">
             <div class="navbar-left d-flex align-items-center">
-                <a href="#" class="navbar-brand">Chezsako</a>
+                <a href="{{ path('home') }}" class="navbar-brand">LaBoutique</a>
                 <div class="search-container ms-3">
                     <input type="text" class="search-input form-control" placeholder="Rechercher...">
                 </div>
@@ -29,7 +29,7 @@
 
             <div class="navbar-right d-flex align-items-center">
                <ul class="nav-links list-unstyled d-flex gap-3 mb-0">
-    <li><a href="/">Accueil</a></li>
+    <li><a href="{{ path('home') }}">Accueil</a></li>
     <li><a href="{{ path('pageproduits') }}">Produits</a></li>
 
     {% if app.user %}
@@ -57,7 +57,7 @@
                 <input type="text" class="form-control" placeholder="Rechercher...">
             </div>
             <ul class="list-unstyled p-3">
-                <li><a href="#home">Accueil</a></li>
+                <li><a href="{{ path('home') }}">Accueil</a></li>
                
                 <li><a href="#Nouveautés"> produits</a></li>
 
