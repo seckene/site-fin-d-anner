@@ -20,9 +20,10 @@ class pagemodifiercontroller extends AbstractController
 if (!$user) {
     return $this->redirectToRoute('login');
 }
+$form = $this->createForm(UserType::class, $user, [
+    'current_user' => $this->getUser()
+]);
 
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($user);
