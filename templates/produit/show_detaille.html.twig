@@ -7,7 +7,7 @@
 
 <div class="d-flex mt5">
     <div class="col">
-        <div class="card" style="width: 50rem; margin-left:1rem; padding:1rem;margin-top:rem">
+        <div class="card" style="width: 50rem; margin-left:1rem; padding:1rem;margin-top:1.5rem">
             <img src="{{ asset('images/' ~ produit.photo) }}" 
                  class="card-img-top" 
                  alt="{{ produit.nom }}">
@@ -33,10 +33,17 @@
   <label><input type="button" name="taille" value="XL" ></label>
 </div>
 {% if app.user %}
-  <input type="button" value="Ajouter au panier" class="btn13 mt-3">
+  <form method="post" action="{{ path('ajouter_panier', {id: produit.id}) }}">
+      <input type="hidden" name="id" value="{{ produit.id }}">
+      <input type="hidden" name="nom" value="{{ produit.nom }}">
+      <input type="hidden" name="prix" value="{{ produit.prix }}">
+      <button type="submit" name="add_to_cart" class="btn13 mt-3">
+          Ajouter au panier
+      </button>
+  </form>
 {% else %}
   <p>Connectez-vous pour ajouter au panier</p>
-  <a href="{{ path('login') }}" class="btn  btn13 btn-primary mt-1">Se connecter</a>
+  <a href="{{ path('login') }}" class="btn btn13 btn-primary mt-1">Se connecter</a>
 {% endif %}
 
     </div>

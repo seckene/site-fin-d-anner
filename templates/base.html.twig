@@ -35,7 +35,13 @@
     {% if app.user %}
         <li><a href="{{ path('profil') }}">Profil</a></li>
         
-    <li> <a href=""> Pannier <i class="fa-solid fa-basket-shopping fa-xl" style="color: #ffffff;"></i></a></li>
+<li>
+  <a href="panier">
+    Panier <i class="fa-solid fa-basket-shopping fa-xl" style="color: #ffffff;"></i>
+  </a>
+</li>
+
+
        <button class="btn btn-secondary btn-lg"><li><a href="{{ path('app_logout') }}">DÉCONNEXION</a></li></button> 
     {% else %}
         <li><a href="{{ path('login') }}">CONNEXION</a></li>
