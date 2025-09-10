@@ -4,7 +4,7 @@ security:
         app_user_provider:
             entity:
                 class: App\Entity\User
-                property: username  # ou "email" selon ta configuration
+                property: username  # ou "email" selon ta config
 
     password_hashers:
         App\Entity\User:
@@ -16,7 +16,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
+        main:                   # 👈 firewall principal
             lazy: true
             provider: app_user_provider
             form_login:
@@ -26,6 +26,7 @@ security:
             logout:
                 path: app_logout
                 target: login
+                invalidate_session: false  # 👈 garde la session après logout
 
     # Contrôle d’accès
     access_control:
