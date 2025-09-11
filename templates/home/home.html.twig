@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-dark">{{ produit.nom }}</h5>
                           <p class="card-text text-muted small">{{ produit.descrptionlong|length > 80 ? produit.descrptionlong[:80] ~ '...' : produit.descrptionlong }}</p>
-                          <p class="fw-bold text-primary">{{ produit.prix }} €</p>
+                          <p class="fw-bold ">{{ produit.prix }} €</p>
                     </div>
                 </div>
             </a>
@@ -51,7 +51,8 @@
                     <div class="card-body">
                         <h5 class="card-title text-dark">{{ produit.nom }}</h5>
                         <p class="card-text text-muted small">{{ produit.descrptionlong|length > 80 ? produit.descrptionlong[:80] ~ '...' : produit.descrptionlong }}</p>
-                        <p class="fw-bold text-primary">{{ produit.prix }} €</p>
+                        <p class="fw-bold 
+                        ">{{ produit.prix }} €</p>
                     </div>
                 </div>
             </a>

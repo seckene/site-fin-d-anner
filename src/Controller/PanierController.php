@@ -17,6 +17,7 @@ class PanierController extends AbstractController
         $nom = $request->request->get('nom');
         $prix = $request->request->get('prix');
         $taille = $request->request->get('taille');
+$photo = $request->request->get('photo');
 
 
         // Vérifie si déjà dans le panier
@@ -31,11 +32,13 @@ class PanierController extends AbstractController
 
         if (!$existe) {
             $panier[] = [
+
                 'id' => $id,
                 'nom' => $nom,
                 'prix' => $prix,
                 'quantite' => 1,
                 'taille' => $taille ?? 'Non spécifiée',
+                'photo' => $photo,
             ];
         }
 

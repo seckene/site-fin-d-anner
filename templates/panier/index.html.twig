@@ -1,56 +1,32 @@
-
 {% extends 'base.html.twig' %}
 
 {% block body %}
 <div class="container py-5">
-    <div class="row justify-content-center">
-    </div>
-        </div>
-<h1 class="cart-title">Mon Panier</h1>
+    <h1 class="cart-title">Mon Panier</h1>
 
-{% if panier is not empty %}
-    <div class="cart-container">
-        {% for item in panier %}
-            <div class="cart-card">
-                <div class="card-content">
-                
-                    <h2 class="item-name">{{ item.nom }}</h2>
-                    <p class="item-price">{{ item.prix }} €</p>
-                    <p class="item-size">Taille : {{ item.taille|default('Non spécifiée') }}</p>
-                    <p class="item-quantity">Quantité : {{ item.quantite }}</p>
-                    <div class="card-actions">
-                        <button class="btn-remove">Supprimer</button>
-                        <button class="btn-increase">+</button>
-                        <button class="btn-decrease">-</button>
+    {% if panier is not empty %}
+        <div class="cart-container">
+            {% for item in panier %}
+                <div class="cart-card">
+                    <div class="cart-image-wrapper">
+                        <img src="{{ asset('images/' ~ (item.photo|default('default.png'))) }}" 
+                             alt="{{ item.nom }}" 
+                             class="cart-image">
+                    </div>
+
+                    <div class="card-content">
+                        <h2 class="item-name">{{ item.nom }}</h2>
+                        <p class="item-price">{{ item.prix }} €</p>
+                        <p class="item-size">Taille : {{ item.taille|default('Non spécifiée') }}</p>
+                        <p class="item-quantity">Quantité : {{ item.quantite }}</p>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
-{% else %}
-    <p class="empty-cart">Votre panier est vide</p>
-{% endif %}
-
-
-
-
-
-
-<script>
-
-function choisirTaille(valeur) {
-  document.getElementById("taille-input").value = valeur;
-  alert("Taille sélectionnée : " + valeur); // 👈 feedback visuel
-}
-
-</script>
-
-
-
-
-
-
-
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="empty-cart">Votre panier est vide</p>
+    {% endif %}
+</div>
 
 <style>
 /* Titre du panier */
@@ -74,13 +50,32 @@ function choisirTaille(valeur) {
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    width: 250px;
+    width: 30%;
     padding: 1rem;
     transition: transform 0.2s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cart-card:hover {
     transform: translateY(-5px);
+}
+
+/* Image du produit */
+.cart-image-wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+}
+
+.cart-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Contenu de la carte */
@@ -88,59 +83,24 @@ function choisirTaille(valeur) {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    text-align: center;
 }
 
-/* Nom produit */
 .item-name {
     font-size: 1.2rem;
     font-weight: bold;
     color: #222;
 }
 
-/* Prix et quantité */
 .item-price {
-    color: #2e7d32; /* vert */
+    color: #2e7d32;
     font-weight: bold;
 }
 
-.item-quantity {
+.item-size, .item-quantity {
     color: #555;
+    font-size: 0.95rem;
 }
-
-/* Boutons actions */
-.card-actions {
-    margin-top: 0.5rem;
-    display: flex;
-    gap: 0.5rem;
-}
-
-.card-actions button {
-    flex: 1;
-    padding: 0.4rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.2s;
-}
-
-.btn-remove {
-    background-color: #e53935;
-    color: #fff;
-}
-.btn-remove:hover { background-color: #c62828; }
-
-.btn-increase {
-    background-color: #43a047;
-    color: #fff;
-}
-.btn-increase:hover { background-color: #2e7d32; }
-
-.btn-decrease {
-    background-color: #fbc02d;
-    color: #fff;
-}
-.btn-decrease:hover { background-color: #f9a825; }
 
 /* Panier vide */
 .empty-cart {
@@ -150,5 +110,4 @@ function choisirTaille(valeur) {
     margin-top: 2rem;
 }
 </style>
-
 {% endblock %}

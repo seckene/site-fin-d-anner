@@ -37,8 +37,9 @@
       <input type="hidden" name="id" value="{{ produit.id }}">
       <input type="hidden" name="nom" value="{{ produit.nom }}">
       <input type="hidden" name="prix" value="{{ produit.prix }}">
-      
     <input type="hidden" name="taille" id="taille-input">  
+    
+    <input type="hidden" name="photo" value="{{ produit.photo }}">  
       <button type="submit" name="add_to_cart" class="btn13 mt-3">
           Ajouter au panier
       </button>
@@ -73,7 +74,6 @@ function toggleTailles() {
 
 function choisirTaille(valeur) {
   document.getElementById("taille-input").value = valeur;
-  alert("Taille sélectionnée : " + valeur); // 👈 feedback visuel
 }
 
 </script>
