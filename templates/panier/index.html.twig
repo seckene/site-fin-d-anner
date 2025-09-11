@@ -16,6 +16,7 @@
                 
                     <h2 class="item-name">{{ item.nom }}</h2>
                     <p class="item-price">{{ item.prix }} €</p>
+                    <p class="item-size">Taille : {{ item.taille|default('Non spécifiée') }}</p>
                     <p class="item-quantity">Quantité : {{ item.quantite }}</p>
                     <div class="card-actions">
                         <button class="btn-remove">Supprimer</button>
@@ -29,6 +30,27 @@
 {% else %}
     <p class="empty-cart">Votre panier est vide</p>
 {% endif %}
+
+
+
+
+
+
+<script>
+
+function choisirTaille(valeur) {
+  document.getElementById("taille-input").value = valeur;
+  alert("Taille sélectionnée : " + valeur); // 👈 feedback visuel
+}
+
+</script>
+
+
+
+
+
+
+
 
 <style>
 /* Titre du panier */

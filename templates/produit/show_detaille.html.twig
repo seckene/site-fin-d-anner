@@ -24,19 +24,21 @@
    <p>Taille: </p>
 
    <input type="button" value="Veuillez choisir" class="btn1" onclick="toggleTailles()">
-
 <div id="tailles" style="display:none; margin-top:10px;">
-  <label><input type="button" name="taille" value="XS" ></label>
-  <label><input type="button" name="taille" value="S" ></label>
-  <label><input type="button" name="taille" value="M" ></label>
-  <label><input type="button" name="taille" value="L" ></label>
-  <label><input type="button" name="taille" value="XL" ></label>
+  <label><input type="button" value="XS" onclick="choisirTaille('XS')"></label>
+  <label><input type="button" value="S" onclick="choisirTaille('S')"></label>
+  <label><input type="button" value="M" onclick="choisirTaille('M')"></label>
+  <label><input type="button" value="L" onclick="choisirTaille('L')"></label>
+  <label><input type="button" value="XL" onclick="choisirTaille('XL')"></label>
 </div>
+
 {% if app.user %}
   <form method="post" action="{{ path('ajouter_panier', {id: produit.id}) }}">
       <input type="hidden" name="id" value="{{ produit.id }}">
       <input type="hidden" name="nom" value="{{ produit.nom }}">
       <input type="hidden" name="prix" value="{{ produit.prix }}">
+      
+    <input type="hidden" name="taille" id="taille-input">  
       <button type="submit" name="add_to_cart" class="btn13 mt-3">
           Ajouter au panier
       </button>
@@ -62,6 +64,18 @@ function toggleTailles() {
   bloc.style.display = "none";  
 }
 }
+
+
+function toggleTailles() {
+  const bloc = document.getElementById("tailles");
+  bloc.style.display = (bloc.style.display === "none") ? "block" : "none";
+}
+
+function choisirTaille(valeur) {
+  document.getElementById("taille-input").value = valeur;
+  alert("Taille sélectionnée : " + valeur); // 👈 feedback visuel
+}
+
 </script>
 
 

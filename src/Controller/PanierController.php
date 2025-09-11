@@ -16,6 +16,8 @@ class PanierController extends AbstractController
 
         $nom = $request->request->get('nom');
         $prix = $request->request->get('prix');
+        $taille = $request->request->get('taille');
+
 
         // Vérifie si déjà dans le panier
         $existe = false;
@@ -33,6 +35,7 @@ class PanierController extends AbstractController
                 'nom' => $nom,
                 'prix' => $prix,
                 'quantite' => 1,
+                'taille' => $taille ?? 'Non spécifiée',
             ];
         }
 
