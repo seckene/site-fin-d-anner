@@ -65,11 +65,11 @@
             <ul class="list-unstyled p-3">
                 <li><a href="{{ path('home') }}">Accueil</a></li>
                
-                <li><a href="#Nouveautés"> produits</a></li>
+                <li><a href="{{ path('pageproduits') }}"> produits</a></li>
 
                 {% if app.user %}
                     <li><a href="{{ path('profil') }}">Profil</a></li>
-                    <li><a href=""><i class="fa-solid fa-basket-shopping fa-2xl" style="color: #ffffff;"></i></a></li>
+                    <li><a href="panier">Panier<i class="fa-solid fa-basket-shopping fa-2xl" style="color: #ffffff;"></i></a></li>
                    <BUtton class="btn btn-outline-light btn-rounded"><li><a href="{{ path('app_logout') }}">DÉCONNEXION</a></li></BUtton> 
                 {% else %}
                     <li><a href="{{ path('login') }}">CONNEXION</a></li>
