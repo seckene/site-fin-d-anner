@@ -78,7 +78,63 @@
             </ul>
         </div>
     </nav>
-    
+    <style>
+/* Navbar fixe en haut */
+.custom-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #1a365d; /* couleur de fond */
+    color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Espace du contenu en dessous de la navbar */
+body {
+    padding-top: 80px; /* ajuste selon la hauteur de ta navbar */
+}
+
+/* Styles du texte et liens */
+.custom-navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.custom-navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Burger menu lignes */
+.burger-line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+
+/* Mobile menu */
+.mobile-menu {
+    background-color: #1a365d;
+    color: white;
+}
+
+/* Affichage flex des menus */
+.nav-links li a {
+    color: white;
+    font-weight: 500;
+}
+
+</style>
+
+<script>
+document.getElementById('burgerToggle').addEventListener('click', function(){
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('d-none');
+});
+</script>
+
         {% block body %}{% endblock %}
     </body>
 </html>

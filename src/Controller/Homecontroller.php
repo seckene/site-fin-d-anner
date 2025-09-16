@@ -15,9 +15,11 @@ class Homecontroller extends AbstractController
     public function index(ProduitRepository $produitRepository): Response
     {
         $produits = $produitRepository->findAll(); // ⚡ variable en minuscule
+        
 
         return $this->render('home/home.html.twig', [
             'produits' => $produits, // ⚡ clé en minuscule pour Twig
+            'user' => $this->getUser()
         ]);
     }
 

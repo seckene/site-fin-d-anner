@@ -1,104 +1,86 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
 
-<div class="d-flex align-items-start">
+<div class="produit-wrapper">
+    <div class="produit-container d-flex align-items-start">
 
-<div class="d-flex mt5">
-    <div class="col">
-        <div class="card" style="width: 45rem; margin-left:1rem; padding:1rem;margin-top:1.5rem">
-            <img src="{{ asset('images/' ~ produit.photo) }}" 
-                 class="card-img-top" 
-                 alt="{{ produit.nom }}">
+        <div class="col">
+            <div class="card produit-card" style="width: 45rem; margin-left:1rem; padding:1rem;margin-top:1.5rem">
+                <img src="{{ asset('images/' ~ produit.photo) }}" 
+                     class="card-img-top" 
+                     alt="{{ produit.nom }}">
+            </div>
         </div>
-    </div>
 
-    <div class="col mt-4" style="margin-left: 2rem;">
-        <h1 class="card-title d-block"> {{ produit.nom }}</h1>
-        <p class="card-text d-block mt-2">{{ produit.descrptionlong }}</p>
-         <p class="card-text d-block ">Nombre de pièces en stock : {{ produit.stock }} </p>
-        <p class="card-text d-block prixx"><strong>{{ produit.prix }} €</strong></p>
-         <p class="text">Couleur <strong>{{ produit.couleur }} </strong>
-</p>
-   <p>Taille: </p>
+        <div class="col mt-4" style="margin-left: 2rem;">
+            <h1 class="card-title d-block">{{ produit.nom }}</h1>
+            <p class="card-text d-block mt-2">{{ produit.descrptionlong }}</p>
+            <p class="card-text d-block">Nombre de pièces en stock : {{ produit.stock }}</p>
+            <p class="card-text d-block prixx"><strong>{{ produit.prix }} €</strong></p>
+            <p class="text">Couleur <strong>{{ produit.couleur }}</strong></p>
+            <p>Taille:</p>
 
-   <input type="button" value="Veuillez choisir" class="btn1" onclick="toggleTailles()">
-<div id="tailles" style="display:none; margin-top:10px;">
-  <label><input type="button" value="XS" onclick="choisirTaille('XS')"></label>
-  <label><input type="button" value="S" onclick="choisirTaille('S')"></label>
-  <label><input type="button" value="M" onclick="choisirTaille('M')"></label>
-  <label><input type="button" value="L" onclick="choisirTaille('L')"></label>
-  <label><input type="button" value="XL" onclick="choisirTaille('XL')"></label>
-</div>
+            <input type="button" value="Veuillez choisir" class="btn1" onclick="toggleTailles()">
+            <div id="tailles" style="display:none; margin-top:10px;">
+              <label><input type="button" value="XS" onclick="choisirTaille(this ,'XS')"></label>
+              <label><input type="button" value="S" onclick="choisirTaille(this ,'S')"></label>
+              <label><input type="button" value="M" onclick="choisirTaille(this ,'M')"></label>
+              <label><input type="button" value="L" onclick="choisirTaille(this ,'L')"></label>
+              <label><input type="button" value="XL" onclick="choisirTaille(this ,'XL')"></label>
+            </div>
 
-{% if app.user %}
-  <form method="post" action="{{ path('ajouter_panier', {id: produit.id}) }}">
-      <input type="hidden" name="id" value="{{ produit.id }}">
-      <input type="hidden" name="nom" value="{{ produit.nom }}">
-      <input type="hidden" name="prix" value="{{ produit.prix }}">
-    <input type="hidden" name="taille" id="taille-input">  
-    
-    <input type="hidden" name="photo" value="{{ produit.photo }}">  
-      <button type="submit" name="add_to_cart" class="btn13 mt-3">
-          Ajouter au panier
-      </button>
-  </form>
-{% else %}
-  <p>Connectez-vous pour ajouter au panier</p>
-  <a href="{{ path('login') }}" class="btn btn13 btn-primary mt-1">Se connecter</a>
-{% endif %}
+            {% if app.user %}
+              <form method="post" action="{{ path('ajouter_panier', {id: produit.id}) }}">
+                  <input type="hidden" name="id" value="{{ produit.id }}">
+                  <input type="hidden" name="nom" value="{{ produit.nom }}">
+                  <input type="hidden" name="prix" value="{{ produit.prix }}">
+                  <input type="hidden" name="taille" id="taille-input">  
+                  <input type="hidden" name="photo" value="{{ produit.photo }}">  
+                  <button type="submit" name="add_to_cart" class="btn13 mt-3">
+                      Ajouter au panier
+                  </button>
+              </form>
+            {% else %}
+              <p>Connectez-vous pour ajouter au panier</p>
+              <a href="{{ path('login') }}" class="btn btn13 btn-primary mt-1">Se connecter</a>
+            {% endif %}
+        </div>
 
     </div>
-
- 
-</div>
 </div>
 
 <script>
 function toggleTailles() {
   const bloc = document.getElementById("tailles");
-
-  if (bloc.style.display === "none") {
-  bloc.style.display = "block";  
-} else {
-  bloc.style.display = "none";  
-}
+  bloc.style.display = bloc.style.display === "none" ? "flex" : "none";
 }
 
-
-function toggleTailles() {
-  const bloc = document.getElementById("tailles");
-  bloc.style.display = (bloc.style.display === "none") ? "block" : "none";
+function choisirTaille(bouton, valeur) {
+    document.getElementById("taille-input").value = valeur;
+    let boutons = document.querySelectorAll("#tailles input");
+    boutons.forEach(b => b.style.backgroundColor = "");
+    bouton.style.backgroundColor = "lightblue";
 }
-
-function choisirTaille(valeur) {
-  document.getElementById("taille-input").value = valeur;
-}
-
 </script>
 
-
- <style>
-
+<style>
 .card-body{
-background-color:whitesmoke;
+    background-color:whitesmoke;
 }
 
-
 .card-text {
-font-size:1rem;
-width: 90%;
+    font-size:1rem;
+    width: 90%;
 }
 .prixx{
     font-size:1.2rem;
-
 }
 
 .btn1{
     width: 60%;
     padding: auto;
-    border:0,5px solid greey;
+    border:0.5px solid grey;
     color:black;
 }
 .btn13{
@@ -108,6 +90,58 @@ width: 90%;
     color:white;
     background-color:green;
 }
-  </style>
+/* Responsive tablette compacte : max-width 900px */
+@media (max-width: 900px) {
+  @media (max-width: 992px) {
+    .produit-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .produit-container .col:first-child {
+        display: flex;
+        justify-content: center;
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+}
+
+
+    .produit-card {
+        width: 95% !important;    /* image plus petite */
+        margin-left: 0 !important;
+        margin-top: 1rem;
+    }
+
+    .col.mt-4 {
+        width: 95% !important;
+        margin-left: 0 !important;
+        text-align: center;
+    }
+
+    .btn1, .btn13 {
+        width: 70%;               /* boutons plus petits */
+        margin: 0 auto 0.8rem auto;
+    }
+
+    #tailles {
+        display: flex !important;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.4rem;
+    }
+
+    .card-text {
+        width: 100%;
+        font-size: 0.95rem;       /* texte légèrement plus petit */
+    }
+
+    .prixx {
+        font-size: 1.1rem;
+    }
+}
+
+</style>
 
 {% endblock %}

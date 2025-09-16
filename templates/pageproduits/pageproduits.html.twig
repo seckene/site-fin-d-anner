@@ -7,37 +7,60 @@
 {% endblock %}
 
 {% block body %}
-<div class="container py-5">
 
-    <div class="d-flex justify-content-center mb-4 mt-5">
+
+
+
+
+
+<div class="container py-5">
+ <div class="d-flex justify-content-center mb-4 mt-5">
         
     </div>
-
-
-
-<div class="chaud">
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
-    {% for produit in produits %}
-       <a href="{{ path('app_produit_show_detaille', {'id': produit.id}) }}" class="card-link text-decoration-none">
-            <div class="card shadow-sm">
-                <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="{{ produit.nom }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ produit.nom }}</h5>
-                    <p class="card-text">{{ produit.description }}</p>
-                    <p class="fw-bold">{{ produit.prix }} €</p>
-                </div>
-            </div>
-        </a>
-    
-    {% endfor %}
+  <div class="chaud">
+    <div>
+      {% for produit in produits %}
+         <a href="{{ path('app_produit_show_detaille', {'id': produit.id}) }}" class="card-link text-decoration-none">
+              <div class="card shadow-sm">
+                  <img src="{{ asset('images/' ~ produit.photo) }}" class="card-img-top" alt="{{ produit.nom }}">
+                  <div class="card-body">
+                      <h5 class="card-title">{{ produit.nom }}</h5>
+                      <p class="card-text">{{ produit.description }}</p>
+                      <p class="fw-bold">{{ produit.prix }} €</p>
+                  </div>
+              </div>
+          </a>
+      {% endfor %}
+    </div>
   </div>
 </div>
 
 
-
 <style>
-.chaud{
-    margin:2rem
+.chaud {
+  margin: 2rem;
 }
+
+.chaud > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Desktop : 3 colonnes */
+  gap: 2rem;
+}
+
+/* Tablette */
+@media (max-width: 992px) {
+  .chaud > div {
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .chaud > div {
+    grid-template-columns: 1fr; /* 1 colonne */
+  }
+}
+
+
 </style>
 {% endblock %}
