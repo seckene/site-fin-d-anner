@@ -134,7 +134,12 @@
 
    <span class="me-3" >
    Bienvenue sur <strong>LaBoutique</strong>, 
-  <span class="text-secondary">{{ app.user.userIdentifier }}</span> !
+  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+     {{ app.user.userIdentifier }}
+
+    
+{% endif %}
+
     © 2020 Copyright :
     <a class="text-white" href="mailto:seckene_sako@hotmail.com">seckene_sako@hotmail.com</a>
   </div>

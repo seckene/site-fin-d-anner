@@ -1,56 +1,80 @@
 {% extends 'basedeux.html.twig' %}
 
-
 {% block body %}
 <div class="d-flex justify-content-center align-items-center mb-4 ">
-        <h1>produits</h1>
-         </div>
-  
+    <h1>produits</h1>
+</div>
+
+<div class="d-flex justify-content-center align-items-center mb-4 mt-5">
+    <h1 class="mb-4">Nos Produits</h1>
+</div>
+
+<div class="table-responsive">
     <table class="table">
-    
-        <thead >
+        <thead>
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Photo</th>
                 <th>PRIX</th>
-                 <th>Description</th>
-                   <th>Detailler</th>
-                    <th>Couleur</th>
-                     <th>actions</th>
+                <th>Description</th>
+                <th>Detailler</th>
+                <th>Couleur</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
-                
-<div class="d-flex justify-content-center align-items-center mb-4 mt-5">
-    <h1 class="mb-4">Nos Produits</h1>
-</div>
-    
-
-    
-        {% for produit in produits %}
-        
-            <tr>
-                <td>{{ produit.id }}</td>
-                <td>{{ produit.nom }}</td>
-                <td>{{ produit.photo }}</td>
-                
-                <td>{{ produit.PRIX }}</td>
-                <td>{{ produit.description }}</td>
-                <td>{{ produit.descrptionlong }}</td>
-                  <td>{{ produit.couleur }}</td>
-                <td>
-                    <a href="{{ path('app_produit_show', {'id': produit.id}) }}">show</a>
-                    <a href="{{ path('app_produit_edit', {'id': produit.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
+            {% for produit in produits %}
+                <tr>
+                    <td>{{ produit.id }}</td>
+                    <td>{{ produit.nom }}</td>
+                    <td>{{ produit.photo }}</td>
+                    <td>{{ produit.PRIX }}</td>
+                    <td>{{ produit.description }}</td>
+                    <td>{{ produit.descrptionlong }}</td>
+                    <td>{{ produit.couleur }}</td>
+                    <td>
+                        <a href="{{ path('app_produit_show', {'id': produit.id}) }}">show</a>
+                        <a href="{{ path('app_produit_edit', {'id': produit.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">no records found</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
+</div>
 
-   
+<style>
+/* Responsive affichage bloc */
+@media (max-width: 768px) {
+    table thead {
+        display: none; /* cache l'entête */
+    }
+    table, table tbody, table tr, table td {
+        display: block;
+        width: 100%;
+    }
+    table tr {
+        margin-bottom: 1rem;
+        border: 1px solid #dee2e6;
+        padding: 0.5rem;
+        border-radius: 5px;
+    }
+    table td {
+        text-align: left;
+        padding: 0.5rem;
+        position: relative;
+    }
+    table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 0.3rem;
+        color: #333;
+    }
+}
+</style>
 {% endblock %}
