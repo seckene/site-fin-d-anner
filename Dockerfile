@@ -16,12 +16,12 @@ COPY . .
 # Installer Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Installer Symfony CLI pour que symfony-cmd fonctionne
-RUN curl -sS https://get.symfony.com/cli/installer | bash \
-    && mv /root/.symfony*/bin/symfony /usr/local/bin/symfony
+# Installer les dépendances PHP via Composer sans auto-scripts
+RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-# Installer les dépendances PHP via Composer
-RUN composer install --no-dev --optimize-autoloader
+# Exécuter manuellement les commandes importantes de Symfony
+RUN php bin/console cache:clear --env=prod
+RUN php bin/console assets:install public
 
 # Préparer cache et logs
 RUN mkdir -p var/cache var/log && chmod -R 777 var

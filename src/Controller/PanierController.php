@@ -17,8 +17,7 @@ class PanierController extends AbstractController
         $nom = $request->request->get('nom');
         $prix = $request->request->get('prix');
         $taille = $request->request->get('taille');
-$photo = $request->request->get('photo');
-
+        $photo = $request->request->get('photo');
 
         // Vérifie si déjà dans le panier
         $existe = false;
@@ -32,7 +31,6 @@ $photo = $request->request->get('photo');
 
         if (!$existe) {
             $panier[] = [
-
                 'id' => $id,
                 'nom' => $nom,
                 'prix' => $prix,
@@ -47,15 +45,34 @@ $photo = $request->request->get('photo');
         // Redirige vers la page du panier
         return $this->redirectToRoute('afficher_panier');
     }
+
     #[Route('/panier', name: 'afficher_panier')]
-public function afficherPanier(SessionInterface $session): Response
-{
-    $panier = $session->get('panier', []);
+    public function afficherPanier(SessionInterface $session): Response
+    {
+        $panier = $session->get('panier', []);
 
-    return $this->render('panier/index.html.twig', [
-        'panier' => $panier
-    ]);
-}
+        return $this->render('panier/index.html.twig', [
+            'panier' => $panier
+        ]);
+    }
 
+    #[Route('/panier/remove/{id}', name: 'app_panier_remove', methods: ['POST'])]
+    public function remove(int $id, Request $request, SessionInterface $session): Response
+    {
+        if ($this->isCsrfTokenValid('remove' . $id, $request->request->get('_token'))) {
+            $panier = $session->get('panier', []);
 
+            foreach ($panier as $key => $item) {
+                if ($item['id'] == $id) {
+                    unset($panier[$key]); // supprime l'article
+                    break;
+                }
+            }
+
+            // Réindexer le tableau
+            $session->set('panier', array_values($panier));
+        }
+
+        return $this->redirectToRoute('afficher_panier');
+    }
 }

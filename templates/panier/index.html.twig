@@ -19,6 +19,12 @@
                         <p class="item-price">{{ item.prix }} €</p>
                         <p class="item-size">Taille : {{ item.taille|default('Non spécifiée') }}</p>
                         <p class="item-quantity">Quantité : {{ item.quantite }}</p>
+                        
+                        <form method="post" action="{{ path('app_panier_remove', {'id': item.id}) }}" style="display:inline;">
+    <input type="hidden" name="_token" value="{{ csrf_token('remove' ~ item.id) }}">
+    <button class="btn btn-danger" type="submit">Supprimer</button>
+</form>
+
                     </div>
                 </div>
             {% endfor %}
@@ -29,6 +35,8 @@
 </div>
 
 <style>
+
+
 /* Titre du panier */
 .cart-title {
     text-align: center;
