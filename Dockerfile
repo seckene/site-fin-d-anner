@@ -3,7 +3,7 @@ FROM php:8.2-apache
 
 # Installer les dépendances nécessaires à Symfony
 RUN apt-get update && apt-get install -y \
-    git unzip libicu-dev libpq-dev libzip-dev zip \
+    git unzip libicu-dev libpq-dev libzip-dev zip curl \
     && docker-php-ext-install intl pdo pdo_mysql pdo_pgsql opcache
 
 # Activer mod_rewrite (routes Symfony)
@@ -15,6 +15,12 @@ COPY . .
 
 # Installer Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Installer Symfony CLI pour que symfony-cmd fonctionne
+RUN curl -sS https://get.symfony.com/cli/installer | bash \
+    && mv /root/.symfony*/bin/symfony /usr/local/bin/symfony
+
+# Installer les dépendances PHP via Composer
 RUN composer install --no-dev --optimize-autoloader
 
 # Préparer cache et logs
