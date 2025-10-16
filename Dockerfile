@@ -1,19 +1,18 @@
+# Utilise une image officielle PHP avec Apache
 FROM php:8.2-apache
 
-# Extensions PHP nécessaires
-RUN docker-php-ext-install pdo pdo_mysql
+# Met à jour apt et installe les extensions PHP et outils nécessaires
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    curl \
+    libicu-dev \
+    libonig-dev \
+    libxml2-dev \
+    && docker-php-ext-install pdo pdo_mysql intl mbstring xml \
+    && a2enmod rewrite
 
-# Apache mod_rewrite
-RUN a2enmod rewrite
-
-# Installer git et unzip pour Composer
-RUN apt-get update && apt-get install -y git unzip curl
-
-# Installer Symfony CLI
-RUN curl -sS https://get.symfony.com/cli/installer | bash
-RUN mv /root/.symfony*/bin/symfony /usr/local/bin/symfony
-
-# Définir répertoire de travail
+# Définir le répertoire de travail
 WORKDIR /var/www/html/
 
 # Copier les fichiers du projet
@@ -22,13 +21,13 @@ COPY . /var/www/html/
 # Installer Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Installer les dépendances Symfony
-RUN composer install --no-dev --optimize-autoloader
+# Installer les dépendances Symfony sans exécuter les scripts auto pour éviter symfony-cmd
+RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-# Clear cache prod
+# Vider le cache Symfony en production
 RUN php bin/console cache:clear --env=prod
 
-# Expose port 80
+# Expose le port 80 pour Apache
 EXPOSE 80
 
 # Lancer Apache
