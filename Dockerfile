@@ -1,28 +1,34 @@
-# Utilise une image officielle PHP avec Apache
 FROM php:8.2-apache
 
-# Installe les extensions PHP nécessaires pour Symfony
+# Extensions PHP nécessaires
 RUN docker-php-ext-install pdo pdo_mysql
 
-# Active mod_rewrite pour Symfony
+# Apache mod_rewrite
 RUN a2enmod rewrite
 
-# Installe Git (nécessaire pour certains packages Composer)
-RUN apt-get update && apt-get install -y git unzip
+# Installer git et unzip pour Composer
+RUN apt-get update && apt-get install -y git unzip curl
 
-# Définit le répertoire de travail
+# Installer Symfony CLI
+RUN curl -sS https://get.symfony.com/cli/installer | bash
+RUN mv /root/.symfony*/bin/symfony /usr/local/bin/symfony
+
+# Définir répertoire de travail
 WORKDIR /var/www/html/
 
-# Copie les fichiers du projet dans le conteneur
+# Copier les fichiers du projet
 COPY . /var/www/html/
 
-# Installe Composer
+# Installer Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Installe les dépendances Symfony
+# Installer les dépendances Symfony
 RUN composer install --no-dev --optimize-autoloader
 
-# Expose le port 80
+# Clear cache prod
+RUN php bin/console cache:clear --env=prod
+
+# Expose port 80
 EXPOSE 80
 
 # Lancer Apache
