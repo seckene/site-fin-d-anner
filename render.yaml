@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: sitefin2
+    name: sitefin4
     env: docker
     plan: free
     autoDeploy: true
