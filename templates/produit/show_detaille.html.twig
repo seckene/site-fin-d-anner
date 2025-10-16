@@ -21,14 +21,31 @@
             <p class="text">Couleur <strong>{{ produit.couleur }}</strong></p>
             <p>Taille:</p>
 
-            <input type="button" value="Veuillez choisir" class="btn1" onclick="toggleTailles()">
-            <div id="tailles" style="display:none; margin-top:10px;">
-              <label><input type="button" value="XS" onclick="choisirTaille(this ,'XS')"></label>
-              <label><input type="button" value="S" onclick="choisirTaille(this ,'S')"></label>
-              <label><input type="button" value="M" onclick="choisirTaille(this ,'M')"></label>
-              <label><input type="button" value="L" onclick="choisirTaille(this ,'L')"></label>
-              <label><input type="button" value="XL" onclick="choisirTaille(this ,'XL')"></label>
-            </div>
+            {# Sélecteur pour les chaussures (ID 25 et 27) #}
+            {% if produit.id == 25 or produit.id == 27 %}
+                <div class="size-selector">
+                    <input type="button" value="Choisir votre taille" class="btn btn-primary" onclick="toggleTailles()">
+                    <div id="tailles" style="display:none; margin-top:10px;">
+                        {% for taille in [36, 37, 38, 39, 40, 41, 42, 43, 44, 45] %}
+                            <label style="display: inline-block; margin: 5px;">
+                                <input type="button" value="{{ taille }}" 
+                                       class="btn btn-outline-secondary taille-btn" 
+                                       onclick="choisirTaille(this, '{{ taille }}')">
+                            </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            {# Sélecteur pour tous les autres produits #}
+            {% else %}
+                <input type="button" value="Veuillez choisir" class="btn1" onclick="toggleTailles()">
+                <div id="tailles" style="display:none; margin-top:10px;">
+                    <label><input type="button" value="XS" onclick="choisirTaille(this, 'XS')"></label>
+                    <label><input type="button" value="S" onclick="choisirTaille(this, 'S')"></label>
+                    <label><input type="button" value="M" onclick="choisirTaille(this, 'M')"></label>
+                    <label><input type="button" value="L" onclick="choisirTaille(this, 'L')"></label>
+                    <label><input type="button" value="XL" onclick="choisirTaille(this, 'XL')"></label>
+                </div>
+            {% endif %}
 
             {% if app.user %}
               <form method="post" action="{{ path('ajouter_panier', {id: produit.id}) }}">
@@ -63,6 +80,7 @@ function choisirTaille(bouton, valeur) {
     bouton.style.backgroundColor = "lightblue";
 }
 </script>
+
 
 <style>
 .card-body{

@@ -16,6 +16,7 @@ class pageproduitscontroller extends AbstractController
 
         return $this->render('pageproduits/pageproduits.html.twig', [
             'produits' => $produits, // 🔹 envoi de la variable au template
+            
         ]);
     }
 }
