@@ -12,3 +12,11 @@ console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
 
 console.log('hellooooooo');
 
+document.addEventListener("DOMContentLoaded", function() {
+    const burgerToggle = document.getElementById("burgerToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    burgerToggle.addEventListener("click", function() {
+        mobileMenu.classList.toggle("d-none");
+    });
+});

@@ -14,6 +14,8 @@ class profilcontroller extends AbstractController
     {
             $user = $this->getUser();
 
+  
+
     if (!$user) {
         throw new AccessDeniedException('Vous devez être connecté pour accéder à cette page.');
     }
