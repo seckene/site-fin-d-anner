@@ -1,0 +1,147 @@
+{% extends 'basedeux.html.twig' %}
+
+{% block body %}
+<div class="row d-flex justify-content-center align-items-center">
+    <div class="card profile-card p-4">
+        <div class="text-center">
+            <div class="avatar mx-auto mb-3"></div>
+
+            <h5 class="mb-1 fw-semibold">
+                <p>{{ user.username }}</p>
+            </h5>
+
+            <div class="text-secondary mb-4">
+                <p>{{ user.email }}</p>
+            </div>
+
+            <div class="d-grid gap-3">
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('admin') }}" class="btn btn-gradient py-2 w-100">
+                        Admin
+                    </a>
+
+                    <a href="{{ path('home') }}" class="btn btn-gradient py-2 w-100">
+                        Visiteur
+                    </a>
+                {% endif %}
+
+                <a href="{{ path('app_logout') }}" class="btn btn-logout py-2 w-100">
+                    Se déconnecter
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center align-items-center">
+    <div class="card commandes-card">
+        <h3 class="mt-2 commandes-title">Commandes récentes</h3>
+
+        <ul class="d-flex fort">
+            <li>Numéro</li>
+            <li>Date</li>
+            <li>Total</li>
+            <li>Statut</li>
+            <li>Action</li>
+        </ul>
+    </div>
+</div>
+
+<style>
+.profile-card {
+    margin-top: 4rem;
+    max-width: 380px;
+    border-radius: 1rem;
+    border: 1px solid #dcdfea;
+    box-shadow: 0 6px 24px rgba(20, 20, 43, 0.06);
+}
+
+.avatar {
+    width: 84px;
+    height: 84px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 28px;
+    color: #fff;
+    background: linear-gradient(135deg, #4c6fff, #9b6bff);
+    box-shadow: inset 0 0 0 4px rgba(255, 255, 255, .35);
+}
+
+.btn-gradient {
+    background: linear-gradient(135deg, #4c6fff, #9b6bff);
+    border: 0;
+    color: #fff;
+}
+
+.btn-gradient:hover,
+.btn-gradient:focus {
+    filter: brightness(1.03);
+    color: #fff;
+}
+
+.btn-logout {
+    background: #f7f8fb;
+    border: 1px solid #e6e8f0;
+    color: #4b5563;
+}
+
+.btn-logout:hover {
+    background: #eef1f7;
+    color:#374151;
+}
+
+.commandes-card {
+    width: 100%;
+    max-width: 40rem;
+    margin-top: 2rem;
+    border: 2px solid grey;
+}
+
+.commandes-title {
+    color: grey;
+    font-size: 1.5rem;
+}
+
+.fort {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.fort li {
+    flex: 1 1 100px;
+    text-align: center;
+    list-style-type: none;
+}
+
+/* ✅ Responsive fix */
+@media (max-width: 768px) {
+    .profile-card {
+        margin-top: 8rem;
+        max-width: 90%;
+    }
+    .commandes-card {
+        max-width: 95%;
+        margin-top: 2rem;
+    }
+    .fort {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    .fort li {
+        text-align: left;
+        padding: 0.25rem 0;
+    }
+    .btn-gradient,
+    .btn-logout {
+        width: 100%;
+    }
+}
+</style>
+
+{% endblock %}

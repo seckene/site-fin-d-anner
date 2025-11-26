@@ -16,6 +16,30 @@ class ProduitRepository extends ServiceEntityRepository
         parent::__construct($registry, Produit::class);
     }
 
+  public function filterProducts(array $filters): array
+{
+    $qb = $this->createQueryBuilder('p');
+
+    if (!empty($filters['categorie'])) {
+        $qb->andWhere('p.categorie = :categorie')
+           ->setParameter('categorie', $filters['categorie']);
+    }
+
+    if (!empty($filters['minPrice'])) {
+        $qb->andWhere('p.prix >= :minPrice')
+           ->setParameter('minPrice', $filters['minPrice']);
+    }
+
+    if (!empty($filters['maxPrice'])) {
+        $qb->andWhere('p.prix <= :maxPrice')
+           ->setParameter('maxPrice', $filters['maxPrice']);
+    }
+
+    return $qb->orderBy('p.id', 'DESC')
+              ->getQuery()
+              ->getResult();
+}
+
     //    /**
     //     * @return Produit[] Returns an array of Produit objects
     //     */

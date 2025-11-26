@@ -1,12 +1,20 @@
 {% block body %}
 <div class="center-page">
+
+<div class="d-flex">
   <a href="{{ path('app_produit_index') }}">
     <button type="button" class="btn-dashboard">
-        Accéder au dashboard Du Roi Seckene !
+        Accéder au dashboard Admin !
     </button>
       </a>
-</div>
 
+
+      <a href="{{ path('home') }}">
+    <button type="button" class="btn-dashboard">
+        Accéder au mode  visiteur !</button>
+      </a>
+</div>
+</div>
 <style>
   html, body { height: 100%; margin: 0; }
 
@@ -18,21 +26,22 @@
   }
 
   .btn-dashboard {
-    background-color: black;
+    background-color:#13294f ;
     color: #fff;
     border: none;
-    padding: 3rem 3rem;
+    padding: 2rem 2rem;
     font-size: 1.3rem;
     font-weight: 600;
-    border-radius: 50px;
+    border-radius: 20px;
     box-shadow: 0 4px 12px rgba(13,30,60,0.3);
     transition: all 0.3s ease-in-out;
     cursor: pointer;
   }
   .btn-dashboard:hover {
-    background-color: #13294f;
+    background-color: whitesmoke;
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(13,30,60,0.4);
+    color:black
   }
   .btn-dashboard:active {
     transform: translateY(0);
